@@ -26,6 +26,19 @@ public class JikanService {
                 .retrieve()
                 .body(JikanTopAnimeResponse.class);
 
+        return toAnimeDtoList(response);
+    }
+
+    public List<AnimeDto> searchAnime(String query) {
+        JikanTopAnimeResponse response = restClient.get()
+                .uri("/anime?q={q}", query)
+                .retrieve()
+                .body(JikanTopAnimeResponse.class);
+
+        return toAnimeDtoList(response);
+    }
+
+    private List<AnimeDto> toAnimeDtoList(JikanTopAnimeResponse response) {
         if (response == null || response.data() == null) {
             return List.of();
         }
