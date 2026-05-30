@@ -1,0 +1,19 @@
+{
+  "name": "anitracker-workflow",
+  "version": "1.0.0",
+  "description": "Full Spring Boot + Angular feature pipeline — spec-driven development, GitHub automation, parallel subagents, test writer, security reviewer",
+  "author": "Abhisek542",
+  "components": {
+    "agents": ["test-writer", "security-reviewer"],
+    "commands": ["new-feature"],
+    "hooks": {
+      "PreToolUse": "pre-delete-guard.ps1",
+      "PostToolUse": "post-edit-format.ps1"
+    }
+  },
+  "stack": {
+    "backend": "Java 17, Spring Boot 3.5, Spring Data JPA, H2",
+    "frontend": "Angular (standalone components)",
+    "api": "Jikan API (https://api.jikan.moe/v4)"
+  }
+}
